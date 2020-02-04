@@ -5,11 +5,9 @@ from flask import Flask, jsonify, request
 
 from model import CNN
 
-device = 'cpu'
 
 model = CNN()
 model.load_state_dict(torch.load('mnist_model.pt'), strict=False)
-model.to(device)
 model.eval()
 
 normalize = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))])
